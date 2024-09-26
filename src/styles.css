@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px #00856e; /*rgba(0, 0, 0, 0.3);*/
+}
+
+.main_title {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+.button{
+  color: #fff;
+  background: #009579;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.button:hover{
+  background: #006653;
+}
+
+.link{
+  color: #009579;
+}
+
+.data-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px #00856e; /*rgba(0, 0, 0, 0.3);*/
+}
