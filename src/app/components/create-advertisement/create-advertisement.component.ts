@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Advertisement} from "../../models/Advertisement";
 
 @Component({
   selector: 'app-create-advertisement',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './create-advertisement.component.css'
 })
 export class CreateAdvertisementComponent {
-
+  advertisement: Advertisement = {};
 }

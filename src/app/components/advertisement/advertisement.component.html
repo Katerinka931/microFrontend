@@ -1,19 +1,20 @@
 <div class="data-container container-fluid">
-  <div class="main_title mt-4">Объявление TITLE</div>
+  <div class="main_title mt-4">Объявление {{advertisement.title}}</div>
   <form class="form-group m-5">
     <div class="mb-3">
-      <label class="form-label">Текст объявления</label>
+      <label class="form-label">{{advertisement.description}}</label>
     </div>
     <div class="mb-3">
-      <label class="form-label">Цена в рублях</label>
+      <label class="form-label">Цена в рублях: {{advertisement.price}}</label>
     </div>
     <div class="mb-3">
-      <label class="form-label">Телефон</label>
+      <label class="form-label">Телефон: {{advertisement.phone}}</label>
     </div>
     <div class="text-center">
-      <button class="button btn text-center m-2" (click)="go_to_discussion_list()">Список обсуждений</button>
-      <button class="button btn text-center m-2" (click)="go_to_create_discussion()">Создать обсуждение</button>
+      <button class="button btn text-center m-2" [disabled]="isDiscussionsDisabled" (click)="gotoDiscussionList()">
+        Список обсуждений {{advertisement.count}}</button>
+      <button class="button btn text-center m-2" (click)="gotoCreateDiscussion()">Создать обсуждение</button>
     </div>
-    <div class="text-center mt-2"><a href="/api/advertisements" class="link link-underline">Назад</a></div>
+    <div class="text-center mt-2"><a href="/api/advertisement" class="link link-underline">Назад</a></div>
   </form>
 </div>

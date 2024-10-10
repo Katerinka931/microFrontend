@@ -10,10 +10,10 @@ import {CreateAdvertisementComponent} from "./components/create-advertisement/cr
 export const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
   {path: "login", component: LoginComponent},
-  {path: "api/advertisements", component: AdvertisementListComponent},
-  {path: "api/advertisement", component: AdvertisementComponent},
+  {path: "api/advertisement", component: AdvertisementListComponent},
+  {path: "api/advertisement/:id", component: AdvertisementComponent},
+  {path: "api/create_advertisement", component: CreateAdvertisementComponent},
   {path: "api/discussions", component: DiscussionListComponent},
   {path: "api/discussion", component: DiscussionComponent},
   {path: "api/create_discussion", component: CreateDiscussionComponent},
-  {path: "api/create_advertisement", component: CreateAdvertisementComponent},
 ];
