@@ -24,7 +24,7 @@ export class AdvertisementComponent {
   }
 
   gotoDiscussionList() {
-    this.router.navigate(['/api/discussions']);
+    this.router.navigate([`/api/discussions/${this.advertisement.id}`]);
   }
 
   gotoCreateDiscussion() {

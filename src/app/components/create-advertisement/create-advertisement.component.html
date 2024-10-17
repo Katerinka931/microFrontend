@@ -1,21 +1,21 @@
 <div class="form-container container-fluid">
   <div class="main_title mt-4">Создание объявления</div>
-  <form class="form-group m-5">
+  <form [formGroup]="advertisementForm" (ngSubmit)="saveAdvertisement()" class="form-group m-5">
     <div class="mb-3 mt-3">
       <label for="title" class="form-label" >Название объявления</label>
-      <input type="text" class="form-control" id="title">
+      <input type="text" formControlName="title" class="form-control" id="title">
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Текст объявления</label>
-      <input type="text" class="form-control" id="description">
+      <input type="text" formControlName="description" class="form-control" id="description">
     </div>
     <div class="mb-3">
       <label for="price" class="form-label">Цена в рублях</label>
-      <input type="number" class="form-control" id="price">
+      <input type="number" formControlName="price" class="form-control" id="price">
     </div>
     <div class="mb-3">
       <label for="phone" class="form-label">Телефон</label>
-      <input type="text" class="form-control" id="phone">
+      <input type="text" formControlName="phone" class="form-control" id="phone">
     </div>
     <div class="text-center">
       <button type="submit" class="button btn text-center">Сохранить</button>

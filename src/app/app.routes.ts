@@ -13,7 +13,7 @@ export const routes: Routes = [
   {path: "api/advertisement", component: AdvertisementListComponent},
   {path: "api/advertisement/:id", component: AdvertisementComponent},
   {path: "api/create_advertisement", component: CreateAdvertisementComponent},
-  {path: "api/discussions", component: DiscussionListComponent},
+  {path: "api/discussions/:advertisement_id", component: DiscussionListComponent},
   {path: "api/discussion", component: DiscussionComponent},
   {path: "api/create_discussion", component: CreateDiscussionComponent},
 ];
