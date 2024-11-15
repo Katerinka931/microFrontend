@@ -33,8 +33,8 @@ export class LoginComponent {
           localStorage.setItem('token', data['token'])
           localStorage.setItem('role', data['role'])
           this.router.navigate(["/api/advertisement/"]);
-        }, error: (e) => {
-          console.log(e);
+        }, error: () => {
+          alert("Не удалось выполнить вход. Неверный логин и/или пароль")
         }
       })
     }
@@ -44,10 +44,10 @@ export class LoginComponent {
     if (this.registerForm.valid) {
       if (this.registerForm.value['password'] == this.registerForm.value['re_password']) {
         this.loginService.register(this.registerForm.value).subscribe({
-          next: (message) => {
-            console.log(message)
-          }, error: (e) => {
-            console.log(e);
+          next: () => {
+            alert("Регистрация прошла успешно! Перейдите на вкладку входа и войдите на сайт")
+          }, error: () => {
+            alert("Не удалось зарегистрироваться!")
           }
         })
       } else {
