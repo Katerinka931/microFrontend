@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Форма входа и регистрации</title>
-  <link rel="stylesheet" href="login.component.css">
-</head>
-<body>
+
 <div class="container">
   <input type="checkbox" id="check">
-  <div class="login form">
+  <div class="login form_css">
     <header>Вход</header>
-    <form action="#">
-      <input type="text" placeholder="Электронная почта">
-      <input type="password" placeholder="Пароль">
-      <input type="button" class="button" value="Войти">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <input type="text" formControlName="login_username" placeholder="Логин" id="login_username">
+      <input type="password" formControlName="login_password" placeholder="Пароль" id="login_password">
+      <input type="submit" class="button" value="Войти">
     </form>
     <div class="signup">
         <span class="signup">Еще нет аккаунта?
@@ -24,13 +14,13 @@
         </span>
     </div>
   </div>
-  <div class="registration form">
+  <div class="registration form_css">
     <header>Регистрация</header>
-    <form action="#">
-      <input type="text" placeholder="Электронная почта">
-      <input type="password" placeholder="Придумайте пароль">
-      <input type="password" placeholder="Повторите пароль">
-      <input type="button" class="button" value="Signup">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <input type="text" formControlName="username" placeholder="Логин" >
+      <input type="password" formControlName="password" placeholder="Придумайте пароль" id="password">
+      <input type="password" formControlName="re_password" placeholder="Повторите пароль" id="re_password">
+      <input type="submit" class="button" value="Регистрация">
     </form>
     <div class="signup">
         <span class="signup">Уже зарегистрированы?
@@ -39,5 +29,3 @@
     </div>
   </div>
 </div>
-</body>
-</html>
