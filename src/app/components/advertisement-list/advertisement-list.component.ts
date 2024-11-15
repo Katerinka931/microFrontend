@@ -13,9 +13,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class AdvertisementListComponent {
   advertisements?: Advertisement[];
-  message: string = '';
+  role = localStorage.getItem('role')
 
-  constructor(private advertisementService: AdvertisementService, private router: Router, private route: ActivatedRoute,) {
+  constructor(private advertisementService: AdvertisementService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -39,11 +39,11 @@ export class AdvertisementListComponent {
 
   deleteAdvertisement(id: any) {
     this.advertisementService.deleteAdvertisement(id).subscribe({
-      next: (message) => {
-        this.message = message;
+      next: () => {
+        alert("Удаление успешно")
         this.retrieve();
-      }, error: (e) => {
-        e.status == 404 ? this.message = e['error']['message'] : this.message = "Ошибка сервера"
+      }, error: () => {
+        alert("Не удалось удалить запись")
       }
     });
   }
