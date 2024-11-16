@@ -38,13 +38,13 @@ export class AdvertisementService {
 
   postAdvertisement(data: any): Observable<any> {
     return this.http.post(this.baseUrl, data).pipe(
-      // catchError(this.handleError)
+      catchError(this.handleError)
     );
   }
 
   deleteAdvertisement(id: any): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`).pipe(
-      // catchError(this.handleError)
+      catchError(this.handleError)
     );
   }
 }

@@ -1,10 +1,24 @@
 <div class="data-container container-fluid">
-  <div class="main_title mt-4">Обсуждение TITLE</div>
+  <div class="main_title mt-4">Обсуждение {{discussion.name}}</div>
   <form class="form-group m-5">
-    <label class="form-control mb-5">TEXT</label>
-
-    <div>тут комментарии</div>
-
-    <div class="text-center mt-2"><a href="#" class="link link-underline">Назад</a></div>
+    <label class="form-control mb-5">{{discussion.text}}</label>
+    <h1 class="text-center mt-3">Комментарии</h1>
+    <div class="container mt-4">
+      <div class="row">
+        <div *ngFor="let comment of comments">
+          <div class="container card mt-3">
+            <div class="row">
+              <div class="card-body col-6">
+                <h5 class="card-title">{{ comment.text }}</h5>
+                <p class="card-text">{{ comment.author }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="button btn text-center m-2" (click)="goBack()">Назад</button>
+    </div>
   </form>
 </div>

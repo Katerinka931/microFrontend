@@ -1,6 +1,6 @@
 <div class="form-container container-fluid">
   <div class="main_title mt-4">Создание обсуждения</div>
-  <form class="form-group m-5">
+  <form [formGroup]="discussionForm" (ngSubmit)="saveDiscussion()" class="form-group m-5">
     <div class="mb-3 mt-3">
       <label for="title" class="form-label">Название обсуждения</label>
       <input type="text" class="form-control" id="title">
@@ -12,7 +12,5 @@
     <div class="text-center">
       <button type="submit" class="button btn text-center">Сохранить</button>
     </div>
-    <div class="text-center mt-2"><a href="#" class="link link-underline">Назад</a></div>
-<!--    todo return to advertisement by id-->
   </form>
 </div>

@@ -4,6 +4,7 @@ import {catchError, Observable, throwError} from 'rxjs';
 
 export const authInterceptor: HttpInterceptorFn = (request: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> => {
   var token = localStorage.getItem('token');
+  console.log('token = ' + token)
   if (token) {
     request = request.clone({headers: request.headers.set('Authorization', 'Bearer ' + token)});
   }

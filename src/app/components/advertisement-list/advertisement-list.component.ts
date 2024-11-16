@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {AdvertisementService} from "../../services/advertisement_service/advertisement.service";
 import {Advertisement} from "../../models/Advertisement";
 import {CommonModule} from "@angular/common";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-advertisement-list',
@@ -46,5 +46,9 @@ export class AdvertisementListComponent {
         alert("Не удалось удалить запись")
       }
     });
+  }
+
+  gotoCreateAdvertisement() {
+    this.router.navigate([`/api/create_advertisement`]);
   }
 }

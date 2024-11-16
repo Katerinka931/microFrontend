@@ -31,6 +31,10 @@ export class AdvertisementComponent {
     this.router.navigate(['/api/create_discussion']);
   }
 
+  goBack() {
+    this.router.navigate(['/api/advertisement']);
+  }
+
   private retrieve(id: any): void {
     this.advertisementService.getAdvertisement(id).subscribe({
       next: (data) => {

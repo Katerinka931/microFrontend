@@ -4,6 +4,7 @@ export interface Discussion {
   advertisement?: number;
   name?: string;
   text?: string;
+  comments?: Comment[];
 }
 
 export interface Comment {

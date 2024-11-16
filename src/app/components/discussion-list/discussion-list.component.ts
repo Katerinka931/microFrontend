@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {DiscussionService} from "../../services/discussion_service/discussion.service";
 import {Discussion} from "../../models/Discussion";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-discussion-list',
@@ -12,7 +12,8 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DiscussionListComponent {
   discussions: Discussion[] = [];
-  constructor(private discussionService: DiscussionService, private route: ActivatedRoute) {
+  role = localStorage.getItem('role')
+  constructor(private discussionService: DiscussionService, private route: ActivatedRoute, private router: Router) {
   }
   ngOnInit(): void {
     this.retrieve();
@@ -28,5 +29,20 @@ export class DiscussionListComponent {
         confirm('Ошибка сервера \nСтатус ошибки ' + e.status)
       }
     });
+  }
+
+  deleteDiscussion(id: any) {
+    this.discussionService.deleteDiscussion(id).subscribe({
+      next: () => {
+        alert("Удаление успешно")
+        this.retrieve();
+      }, error: () => {
+        alert("Не удалось удалить запись")
+      }
+    });
+  }
+
+  gotoDiscussion(id: any) {
+    this.router.navigate([`/api/discussion/${id}`]);
   }
 }

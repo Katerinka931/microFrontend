@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AdvertisementService} from "../../services/advertisement_service/advertisement.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-advertisement',
@@ -12,7 +13,7 @@ import {AdvertisementService} from "../../services/advertisement_service/adverti
 export class CreateAdvertisementComponent {
   advertisementForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private advertisementService: AdvertisementService) {
+  constructor(private router: Router, private fb: FormBuilder, private advertisementService: AdvertisementService) {
     this.advertisementForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -26,10 +27,16 @@ export class CreateAdvertisementComponent {
       this.advertisementService.postAdvertisement(this.advertisementForm.value).subscribe({
         next: (message) => {
           console.log(message)
+          alert("Объявление создано")
         }, error: (e) => {
-          console.log(e);
+          console.log(e)
+          alert("Не удалось создать объявление")
         }
       })
     }
+  }
+
+  goBack() {
+    this.router.navigate(['/api/advertisement']);
   }
 }
