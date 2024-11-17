@@ -8,10 +8,8 @@
         <div *ngFor="let comment of comments">
           <div class="container card mt-3">
             <div class="row">
-              <div class="card-body col-6">
-                <h5 class="card-title">{{ comment.text }}</h5>
-                <p class="card-text">{{ comment.author }}</p>
-              </div>
+              <div class="col-10"><h5 class="card-title">{{ comment.text }}</h5></div>
+              <div class="col-2"><h5 class="card-text">{{ comment.author }}</h5></div>
             </div>
           </div>
         </div>

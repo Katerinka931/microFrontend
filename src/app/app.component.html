@@ -1,4 +1,6 @@
-<router-outlet/>
 <ng-container>
-  <button (click)="logout()">Выход</button>
+  <div *ngIf="isAuthenticated==true" class="button-container">
+    <button (click)="logout()">Выход</button>
+  </div>
 </ng-container>
+<router-outlet/>

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment.development";
 import {catchError, Observable, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {TokenStorageService} from "../token_storage_service/token-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 export class LoginService {
   private baseUrl = environment.apiUrl + '/auth'
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -33,5 +34,8 @@ export class LoginService {
     return this.http.post(`${this.baseUrl}/register`, data).pipe(
       catchError(this.handleError)
     );
+  }
+  public logout() {
+    this.tokenStorage.signOut();
   }
 }

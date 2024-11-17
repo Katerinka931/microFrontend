@@ -15,5 +15,5 @@ export const routes: Routes = [
   {path: "api/create_advertisement", component: CreateAdvertisementComponent},
   {path: "api/discussions/:advertisement_id", component: DiscussionListComponent},
   {path: "api/discussion/:discussion_id", component: DiscussionComponent},
-  {path: "api/create_discussion", component: CreateDiscussionComponent},
+  {path: "api/create_discussion/:advertisement_id", component: CreateDiscussionComponent},
 ];

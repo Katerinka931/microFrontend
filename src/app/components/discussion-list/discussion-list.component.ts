@@ -2,18 +2,22 @@ import { Component } from '@angular/core';
 import {DiscussionService} from "../../services/discussion_service/discussion.service";
 import {Discussion} from "../../models/Discussion";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TokenStorageService} from "../../services/token_storage_service/token-storage.service";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-discussion-list',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './discussion-list.component.html',
   styleUrl: './discussion-list.component.css'
 })
 export class DiscussionListComponent {
   discussions: Discussion[] = [];
-  role = localStorage.getItem('role')
-  constructor(private discussionService: DiscussionService, private route: ActivatedRoute, private router: Router) {
+  role: string | null;
+  constructor(private discussionService: DiscussionService, private route: ActivatedRoute, private router: Router,
+              private tokenStorage: TokenStorageService) {
+    this.role = tokenStorage.getUserRole()
   }
   ngOnInit(): void {
     this.retrieve();

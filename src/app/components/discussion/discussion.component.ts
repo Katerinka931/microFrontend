@@ -3,11 +3,12 @@ import {DiscussionService} from "../../services/discussion_service/discussion.se
 import {CommentService} from "../../services/comment_service/comment.service";
 import {Discussion} from "../../models/Discussion";
 import {ActivatedRoute, Router} from "@angular/router";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-discussion',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './discussion.component.html',
   styleUrl: './discussion.component.css'
 })
@@ -19,7 +20,7 @@ export class DiscussionComponent {
   }
 
   ngOnInit(): void {
-    this.retrieve(this.route.snapshot.params["id"]);
+    this.retrieve(this.route.snapshot.params["discussion_id"]);
   }
 
   private retrieve(id: any): void {
@@ -34,6 +35,7 @@ export class DiscussionComponent {
     });
   }
   goBack() {
-    this.router.navigate(['/api/discussion']);
+    // todo
+    // this.router.navigate(['/api/discussion/']);
   }
 }

@@ -27,8 +27,8 @@ export class AdvertisementComponent {
     this.router.navigate([`/api/discussions/${this.advertisement.id}`]);
   }
 
-  gotoCreateDiscussion() {
-    this.router.navigate(['/api/create_discussion']);
+  gotoCreateDiscussion(id:any) {
+    this.router.navigate([`/api/create_discussion/${id}`]);
   }
 
   goBack() {

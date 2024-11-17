@@ -13,7 +13,7 @@
     <div class="text-center">
       <button class="button btn text-center m-2" [disabled]="isDiscussionsDisabled" (click)="gotoDiscussionList()">
         Список обсуждений {{advertisement.count}}</button>
-      <button class="button btn text-center m-2" (click)="gotoCreateDiscussion()">Создать обсуждение</button>
+      <button class="button btn text-center m-2" (click)="gotoCreateDiscussion(advertisement.id)">Создать обсуждение</button>
     </div>
   </form>
   <div class="text-center">

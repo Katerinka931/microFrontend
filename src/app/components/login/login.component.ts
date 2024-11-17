@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {LoginService} from "../../services/login_service/login.service";
 import {Router} from "@angular/router";
+import {TokenStorageService} from "../../services/token_storage_service/token-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router, private tokenStorage: TokenStorageService) {
     this.loginForm = this.fb.group({
       login_username: ['', Validators.required],
       login_password: ['', Validators.required]
@@ -30,8 +31,8 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.loginService.login(this.loginForm.value).subscribe({
         next: (data) => {
-          localStorage.setItem('token', data['token'])
-          localStorage.setItem('role', data['role'])
+          this.tokenStorage.saveToken(data['token']);
+          this.tokenStorage.saveUserRole(data['role']);
           this.router.navigate(["/api/advertisement/"]);
         }, error: () => {
           alert("Не удалось выполнить вход. Неверный логин и/или пароль")

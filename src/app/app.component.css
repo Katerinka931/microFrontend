@@ -1,0 +1,19 @@
+.button-container {
+  display: flex; /* Используем Flexbox */
+  justify-content: flex-end; /* Выравнивание по правому краю */
+  padding: 10px; /* Отступы для контейнера */
+}
+
+button {
+  background-color: #26a411; /* Цвет фона кнопки */
+  color: white; /* Цвет текста кнопки */
+  border: none; /* Убираем рамку */
+  border-radius: 4px; /* Скругление углов */
+  padding: 10px 20px; /* Отступы внутри кнопки */
+  cursor: pointer; /* Курсор при наведении */
+  transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+button:hover {
+  background-color: #1f7e0d; /* Цвет фона при наведении */
+}

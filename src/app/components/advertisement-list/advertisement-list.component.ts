@@ -3,6 +3,7 @@ import {AdvertisementService} from "../../services/advertisement_service/adverti
 import {Advertisement} from "../../models/Advertisement";
 import {CommonModule} from "@angular/common";
 import {Router} from "@angular/router";
+import {TokenStorageService} from "../../services/token_storage_service/token-storage.service";
 
 @Component({
   selector: 'app-advertisement-list',
@@ -13,9 +14,10 @@ import {Router} from "@angular/router";
 })
 export class AdvertisementListComponent {
   advertisements?: Advertisement[];
-  role = localStorage.getItem('role')
+  role: string | null;
 
-  constructor(private advertisementService: AdvertisementService, private router: Router) {
+  constructor(private advertisementService: AdvertisementService, private router: Router, private tokenStorage: TokenStorageService) {
+    this.role = this.tokenStorage.getUserRole()
   }
 
   ngOnInit(): void {

@@ -5,11 +5,8 @@
       <div class="container card mt-3">
         <div class="row">
           <div class="card-body col-6">
-            <h5 class="card-title">{{ discussion.title }}</h5>
-            <p class="card-text">{{ discussion.description }}</p>
-          </div>
-          <div class="card-body col-2">
-            <h5 class="card-title">Цена: {{ discussion.price }}</h5>
+            <h5 class="card-title">{{ discussion.name }}</h5>
+            <p class="card-text">{{ discussion.text }}</p>
           </div>
           <div class="card-body col-2">
             <button class="button" (click)="gotoDiscussion(discussion.id)">Открыть</button>
