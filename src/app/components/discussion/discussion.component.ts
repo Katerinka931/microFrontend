@@ -4,23 +4,30 @@ import {CommentService} from "../../services/comment_service/comment.service";
 import {Discussion} from "../../models/Discussion";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CommonModule} from "@angular/common";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-discussion',
   standalone: true,
-  imports: [CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './discussion.component.html',
   styleUrl: './discussion.component.css'
 })
 export class DiscussionComponent {
   discussion: Discussion = {};
+  discussionId?: string;
   comments: any;
+  commentForm: FormGroup;
 
-  constructor(private discussionService: DiscussionService, private commentService: CommentService, private router: Router, private route: ActivatedRoute) {
+  constructor(private discussionService: DiscussionService, private fb: FormBuilder, private commentService: CommentService, private router: Router, private route: ActivatedRoute) {
+    this.discussionId = this.route.snapshot.params["discussion_id"]
+    this.commentForm = this.fb.group({
+      text: ['', Validators.required]
+    })
   }
 
   ngOnInit(): void {
-    this.retrieve(this.route.snapshot.params["discussion_id"]);
+    this.retrieve(this.discussionId);
   }
 
   private retrieve(id: any): void {
@@ -34,8 +41,23 @@ export class DiscussionComponent {
       }
     });
   }
+
   goBack() {
     // todo
     // this.router.navigate(['/api/discussion/']);
+  }
+
+  sendComment(id: any) {
+    this.commentForm.value['discussion_id'] = id
+    this.commentService.postComment(this.commentForm.value).subscribe({
+      next: (message) => {
+        this.retrieve(this.discussionId);
+        this.commentForm.reset()
+        console.log(message)
+      }, error: (e) => {
+        console.log(e);
+        confirm('Ошибка сервера \nСтатус ошибки ' + e.status)
+      }
+    });
   }
 }

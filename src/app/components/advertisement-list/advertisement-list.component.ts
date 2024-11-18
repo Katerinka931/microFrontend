@@ -41,8 +41,8 @@ export class AdvertisementListComponent {
 
   deleteAdvertisement(id: any) {
     this.advertisementService.deleteAdvertisement(id).subscribe({
-      next: () => {
-        alert("Удаление успешно")
+      next: (message) => {
+        alert(message['message'])
         this.retrieve();
       }, error: () => {
         alert("Не удалось удалить запись")

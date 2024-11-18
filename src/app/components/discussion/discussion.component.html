@@ -14,6 +14,15 @@
           </div>
         </div>
       </div>
+      <form [formGroup]="commentForm" (ngSubmit)="sendComment(discussion.id)">
+        <div class="input-group mb-3  mt-3">
+          <input type="text" class="form-control" formControlName="text" placeholder="Введите ваш комментарий"
+                 aria-label="Введите ваш комментарий" aria-describedby="button-add">
+          <button class="btn btn-outline-secondary" type="submit" id="button-add">
+            Отправить
+          </button>
+        </div>
+      </form>
     </div>
     <div class="text-center">
       <button class="button btn text-center m-2" (click)="goBack()">Назад</button>
