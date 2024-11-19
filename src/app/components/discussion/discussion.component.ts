@@ -43,8 +43,7 @@ export class DiscussionComponent {
   }
 
   goBack() {
-    // todo
-    // this.router.navigate(['/api/discussion/']);
+    this.router.navigate(['/api/advertisement/']);
   }
 
   sendComment(id: any) {

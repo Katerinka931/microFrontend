@@ -39,7 +39,7 @@ export class AdvertisementComponent {
     this.advertisementService.getAdvertisement(id).subscribe({
       next: (data) => {
         this.advertisement = data;
-        // todo this.isDiscussionsDisabled = data.count == 0;
+        this.isDiscussionsDisabled = data.count == 0;
       }, error: (e) => {
         console.log(e);
         confirm('Ошибка сервера \nСтатус ошибки ' + e.status)
