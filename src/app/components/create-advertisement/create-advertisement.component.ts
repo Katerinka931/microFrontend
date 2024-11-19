@@ -33,6 +33,8 @@ export class CreateAdvertisementComponent {
           alert("Не удалось создать объявление")
         }
       })
+    } else {
+      alert("Проверьте правильность ввода!")
     }
   }
 
